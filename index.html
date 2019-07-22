@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <h1 class="game name">Crystal Collector!</h1>
+
+    <div class="rules">
+        <p>You will be given a random number at the start of the game.</p>
+        <p> are four crystals below. By clicking on the crystals you will add a specific number to your score.
+            <p>You win the game by matching the score provided. If you go over the goal score, you lose. </p>
+            <p> The value of the crystals is hidden until you select one.</p>
+            <p> The values of the crystal will change each time after the game ends.</p>
+    </div>
+
+    <div class="row">
+            <h1 id="wins"></h1>
+            <h1 id="loses"></h1>
+            <h1 id="targetScore"></h1>
+            <h1 id="your-score"></h1>
+            <div class="crystals"></div>
+
+ </div>
+           
+ 
+
+    <script>
+       
+
+            var wins = 0;
+            var loses = 0;
+            var targetScore;
+            var playerScore = 0;
+
+
+// resets the game when when you have won or lost
+            var resetGame = function () {
+                $(".crystals").empty();
+                targetScore = Math.floor(Math.random() * 99) + 21;
+                $("#targetScore").html("Target Score: " + targetScore);
+                
+                console.log(target_Score)
+            }
+            
+
+
+
+            for (var i = 0; i < 4; i++) {
+
+
+                var random = Math.floor(Math.random() * 11) + 1;
+                console.log(random)
+                var crystals =$("<div>");
+                crystal.attr ({
+                    "id": 'crystal' + i,
+                    "class": 'crystal',
+
+                })
+            }
+            var crystal =$("<div>");
+
+
+
+
+
+
+
+
+
+
+            
+    </script>
+</body>
+
+</html>

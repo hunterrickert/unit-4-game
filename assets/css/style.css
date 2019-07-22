@@ -1,0 +1,15 @@
+.crystals{
+    border: 1px;
+    background-color: aquamarine;
+    display: flex;
+
+}
+
+.crystal{
+    background: red;
+    border: 1px;
+}
+
+body {
+    background: aquamarine;
+}
