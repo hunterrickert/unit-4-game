@@ -22,61 +22,102 @@
     </div>
 
     <div class="row">
-            <h1 id="wins"></h1>
-            <h1 id="loses"></h1>
-            <h1 id="targetScore"></h1>
-            <h1 id="your-score"></h1>
-            <div class="crystals"></div>
+        <h1 id="wins"></h1>
+        <h1 id="loses"></h1>
+        <h1 id="targetScore"></h1>
+        <h1 id="your-score"></h1>
+        <div class="crystals"></div>
 
- </div>
-           
- 
+    </div>
+
+
 
     <script>
-       
-
-            var wins = 0;
-            var loses = 0;
-            var targetScore;
-            var playerScore = 0;
 
 
-// resets the game when when you have won or lost
-            var resetGame = function () {
-                $(".crystals").empty();
-                targetScore = Math.floor(Math.random() * 99) + 21;
-                $("#targetScore").html("Target Score: " + targetScore);
-                
-                console.log(target_Score)
-            }
-            
+        var wins = 0;
+        var loses = 0;
+        var targetScore;
+        var playerScore = 0;
 
 
+        // resets the game when when you have won or lost
+        var resetGame = function () {
+            $(".crystals").empty();
+            targetScore = Math.floor(Math.random() * 99) + 11;
+            console.log(targetScore)
+            $("#targetScore").html("Target Score: " + targetScore);
 
-            for (var i = 0; i < 4; i++) {
+            console.log(target_Score)
 
-
-                var random = Math.floor(Math.random() * 11) + 1;
-                console.log(random)
-                var crystals =$("<div>");
-                crystal.attr ({
-                    "id": 'crystal' + i,
-                    "class": 'crystal',
-
-                })
-            }
-            var crystal =$("<div>");
+            $("#targetScore").html("Target Score: " + target_score);
+            $("#Wins").html("Wins: " + wins);
+            $("#Losses").html("Losses: " + losses);
+            console.log("#wins")
+            // $("#counter").html("Your Number " + counter);
+        }
 
 
 
 
+        for (var i = 0; i < 4; i++) {
+
+
+            var randomNumber = Math.floor(Math.random() * 11) + 1;
+            console.log(randomNumber)
+            var crystals = $("<div>");
+            crystal.attr({
+                "id": 'crystal' + i,
+                "class": 'crystal',
+                "data-crystalvalue": randomNumber
+
+            });
+            $(".crystals").append(crystal);
+            console.log("Crystal test");
+
+        }
+        $("#counter").html("Score: " + counter);
+        // var crystal = $("<div>");
+
+                $(document).on("click", ".crystal", function () {
+    var crystalValue = parseInt($(this).attr("data-crystalvalue"));
+    counter += crystalValue;
+
+    $("#counter").html(counter);
+    $("#counter").html("Your Number " + counter);
+
+    if (counter > target_score) {
+        losses++;
+        console.log("try again");
+        $("#Losses").html(losses);
+        counter = 0;
+        // resetting ifs
+        resetGame();
+    }
+    else if (counter === target_score) {
+        wins++;
+        console.log("You win!")
+        $("#Wins").html(wins);
+        counter = 0;
+        // resetting ifs
+        resetGame();
+
+
+    }
+    console.log(counter)
+
+
+});
 
 
 
 
 
 
-            
+
+
+
+
     </script>
 </body>
 
