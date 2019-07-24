@@ -1,13 +1,17 @@
 .crystals{
     border: 1px;
-    background-color: aquamarine;
+    background-color: black;
     display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
 
 .crystal{
     background: red;
     border: 1px;
+    height: 200px;
+    margin: 5px;
 }
 
 body {
