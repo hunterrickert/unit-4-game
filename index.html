@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+
 
 
 </head>
@@ -28,45 +28,92 @@
         <h1 id="wins"></h1>
         <h1 id="losses"></h1>
         <h1 id="random_results"></h1>
-        <h1 id="results"></h1>
-        <div class="crystal"></div>
+        <h1 id="totalScore"></h1>
+        <div class="crystal-div"></div>
 
     </div>
 
 
-
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script>
 
         let random_results;
-        let losses;
-        let wins;
+        let losses= 0;
+        let wins= 0;
+        let totalScore = 0;
 
         random_results = Math.floor(Math.random() * 99 + 31);
         console.log(random_results)
 
         // $("#result").html('Random Result: ');
+        function makeCrystals() {
 
-        for(let i = 0; i<4; i++){
+            $(".crystal-div").empty();
+            for (let i = 1; i < 5; i++) {
 
-            let random = Math.floor(Math.random() * 12);
-            console.log(random);
+                let random = Math.floor(Math.random() * 15) + 1;
+                console.log(random);
 
-            var crystal = $("<div>");
+                var crystal = $("<div>");
                 crystal.attr({
                     "class": 'crystal',
                     "data-random": random
-                })
+                });
+           
+                crystal.text("Crystal " + i);
 
-            $(".crystals").append(crystal);
+                $(".crystal-div").append(crystal);
 
-        }
 
-        $(".crystal").on('click', function () {
+            }
+        };
+        makeCrystals();
+        displayStats();
 
-            console.log($("hello", this))attr('data-random'));
+        $(document).on('click', ".crystal", function () {
+
+            console.log("hello", + $(this).attr('data-random'));
+            let crystalVal = parseFloat($(this).attr('data-random'))
+            totalScore += crystalVal;
+            displayStats();
+
+            console.log(totalScore);
+
+
+            if (
+                totalScore === random_results) {
+
+                wins++;
+                alert("you won!");
+                reset();
+            } if (
+                totalScore > random_results) {
+                losses++;
+                alert("You lost!");
+                reset();
+            }
+
 
 
         })
+        function reset() {
+            totalScore = 0;
+            makeCrystals();
+            random_results = Math.floor(Math.random() * 99 + 31);
+            displayStats();
+            console.log(random_results)
+            
+
+
+        }
+
+        function displayStats() {
+            $("#wins").text("Wins: " + wins);
+            $("#losses").text("Losses: " + losses);
+            $("#random_results").text("Random Number: " + random_results);
+            $("#totalScore").text("Your Score: " + totalScore);
+
+        }
 
 
 
